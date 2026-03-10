@@ -1,0 +1,76 @@
+I need you to rebuild this app completely. Delete all existing src files and start fresh. Here's exactly what I need:
+
+1. Install react-router-dom if not already installed
+
+2. Create folder: public/projects/torrey-reserve/
+
+3. Create file public/projects/torrey-reserve/config.json with this content:
+{"project":"Torrey Reserve","city":"San Diego","images":[{"id":"IMG_001","file":"IMG_001.jpg"},{"id":"IMG_002","file":"IMG_002.jpg"},{"id":"IMG_003","file":"IMG_003.jpg"},{"id":"IMG_004","file":"IMG_004.jpg"},{"id":"IMG_005","file":"IMG_005.jpg"},{"id":"IMG_006","file":"IMG_006.jpg"},{"id":"IMG_007","file":"IMG_007.jpg"},{"id":"IMG_008","file":"IMG_008.jpg"},{"id":"IMG_009","file":"IMG_009.jpg"}]}
+
+4. The main entry should render a BrowserRouter with two routes:
+   - "/" shows a simple message: "Append a project slug to the URL"
+   - "/:projectSlug" loads a ProjectPage component
+
+5. The ProjectPage component fetches /projects/{slug}/config.json on mount and renders a full-page app with these sections, in order:
+
+HERO SECTION:
+- Centered logo from /logo.png (height 48px)
+- Project name as h1 (42px, bold)
+- City name below (16px, gray)
+- Gold (#CB9B4B) pill showing "LAUNCH PRICING ENDS IN" with a live countdown timer starting at 14 days from page load
+
+IMAGE GALLERY:
+- Centered heading "SELECT YOUR FAVORITES" (uppercase, letter-spacing 0.18em, bold)
+- Counter badge showing "X Selected" in gold pill (only when count > 0)
+- 3-column grid of images loaded from /projects/{slug}/{filename}
+- Each image has 4:3 aspect ratio, 8px border radius
+- Clicking an image toggles selection with a gold border and gold checkmark badge
+- Bottom overlay gradient shows image ID and "SELECTED" label
+
+PRICING SECTION:
+- Centered heading "PORTFOLIO POWER PACK PRICING" 
+- Subtitle "USE ANYWHERE. FOREVER." (uppercase, small, gray)
+- 3 tier cards in a row:
+  - 3 Image Pack: regular $695, launch $645, no bonus
+  - 5 Image Pack: regular $1,095, launch $995, has bonus, labeled "Most Popular"
+  - 8 Image Pack: regular $1,495, launch $1,295, has bonus
+- Each card shows: pack name, strikethrough regular price, large launch price, "LAUNCH RATE" label
+- 5 and 8 pack cards show "+1 Free Image within 72hrs" badge
+- Selected tier has gold border and gold checkmark
+- AUTO-TIER LOGIC: Selecting images auto-picks the covering tier:
+  - 1-3 images → 3-pack (capacity 3, no bonus)
+  - 4-6 images → 5-pack (capacity 6 = 5 + 1 bonus)
+  - 7-9 images → 8-pack (capacity 9 = 8 + 1 bonus)
+  - 10+ → overflow/custom quote mode
+- Users can manually click a tier to override
+
+YOUR SELECTION + CTA:
+- Two-column layout
+- Left: "YOUR SELECTION" card showing Package, Favorites count, Bonus (+1 Free, only when earned), Total Images
+- Bonus is EARNED when user selects >= base pack count (5 or 8)
+- Nudge messages: "Select X more to unlock your free bonus image" or "You can select X more images with this pack"
+- Right: Gold (#CB9B4B) background panel with white text showing price, image count, and mailto link button
+- Button says "GET MY PHOTOS" (uppercase, letter-spacing 0.18em, white background, gold text)
+- Below button: italic text "You won't be charged yet. This sends your selections so we can get you an invoice."
+- All text in gold box should be bright white (rgba 255,255,255,0.75-0.85)
+- Mailto goes to haley@haleyhillphotography.com with prefilled subject and body including project name and selected image IDs
+- If overflow (10+), show "Custom Quote" mode with different mailto
+
+HOW IT WORKS:
+- 3 numbered steps with circle icons
+- Step 1: "Send Your Selections" — gold circle
+- Step 2: "Pay Online" — gray circle  
+- Step 3: "Download Your Images" — gray circle
+
+FOOTER:
+- Simple "© Haley Hill Photography"
+
+STYLING:
+- Font: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, sans-serif
+- Primary color: #CB9B4B (gold)
+- Background: white
+- All headings: uppercase, letter-spacing 0.18em, bold
+- Clean, minimal, professional, warm aesthetic
+- Responsive: single column on mobile
+
+Do NOT add any features, animations, or styling beyond what I described. Match this spec exactly.
